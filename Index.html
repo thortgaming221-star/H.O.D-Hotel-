@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>H.O.D | Haven of Distinction – Enigmatic Luxury Hotel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #faf8f5;
+            --text-primary: #1e1e2a;
+            --text-light: #5a5a6e;
+            --card-bg: #ffffff;
+            --border-light: #e8e6e1;
+            --shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+            --header-bg: rgba(10,10,18,0.92);
+            --footer-bg: #0b0b12;
+            --gold: #c9a03d;
+            --gold-light: #e6c06b;
+            --gold-dark: #a67c1a;
+            --success: #2e7d5e;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        /* header & nav */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--header-bg);
+            color: white;
+            z-index: 1000;
+            padding: 0.8rem 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(201,160,61,0.3);
+        }
+
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #f5e3a1, #d4af37);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-light);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-name {
+            color: var(--gold-light);
+            font-weight: 600;
+            cursor: default;
+        }
+
+        .logout-btn {
+            background: rgba(201,160,61,0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold-light);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .logout-btn:hover {
+            background: var(--gold);
+            color: #1e1e2a;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            background: rgba(0,0,0,0.7);
+            color: var(--gold);
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1100;
+            backdrop-filter: blur(6px);
+            border: 1px solid var(--gold);
+            transition: all 0.2s;
+        }
+
+        .music-control:hover {
+            transform: scale(1.08);
+            background: var(--gold);
+            color: #111;
+        }
+
+        /* hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hero-left {
+            flex: 1;
+            background: linear-gradient(145deg, #0f0f1c, #191927);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero-left-content {
+            max-width: 600px;
+            color: white;
+        }
+
+        .hero-left-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-left-content h1 .hod {
+            color: var(--gold);
+        }
+
+        .hero-left-content .tagline {
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-right {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 400px;
+        }
+
+        .hero-right-content {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            color: white;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gold);
+            color: #1e1e2a;
+            padding: 0.9rem 2rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* sections */
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--gold);
+            margin: 12px auto 0;
+        }
+
+        /* rooms grid */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .room-info {
+            padding: 1.5rem;
+        }
+
+        .room-price {
+            color: var(--gold-dark);
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        /* amenities */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .amenity {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            transition: 0.25s;
+        }
+
+        .amenity i {
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .amenity:hover {
+            background: var(--gold);
+            transform: translateY(-6px);
+        }
+
+        .amenity:hover i {
+            color: white;
+        }
+
+        /* branches */
+        .branches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .branch-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .branch-card i {
+            font-size: 2.2rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .headquarter-badge {
+            background: var(--gold);
+            color: #1e1e2a;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-top: 0.8rem;
+        }
+
+        /* booking form */
+        .booking-form {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 32px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--gold);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(201,160,61,0.2);
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .payment-method {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid var(--border-light);
+            border-radius: 18px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            background: white;
+        }
+
+        .payment-method.active {
+            border-color: var(--gold);
+            background: rgba(201,160,61,0.08);
+        }
+
+        .payment-method i {
+            font-size: 1.5rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .credit-card-form {
+            display: none;
+        }
+
+        .credit-card-form.active {
+            display: block;
+            animation: fadeIn 0.25s;
+        }
+
+        .card-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .payment-summary {
+            background: linear-gradient(125deg, rgba(201,160,61,0.08), #fefaf0);
+            padding: 1.5rem;
+            border-radius: 24px;
+            margin-top: 1.5rem;
+        }
+
+        .total-amount {
+            font-size: 2rem;
+            color: var(--gold-dark);
+            font-weight: 800;
+        }
+
+        /* modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 32px;
+            max-width: 450px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* creators */
+        .creators {
+            background: linear-gradient(145deg, #fefaf5, white);
+            padding: 2rem;
+            border-radius: 36px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .owner-card {
+            background: rgba(201,160,61,0.08);
+            padding: 1rem;
+            border-radius: 28px;
+            margin: 1rem auto;
+            max-width: 450px;
+        }
+
+        .creator-names {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .creator-card {
+            background: rgba(201,160,61,0.12);
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+        }
+
+        /* contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        footer {
+            background: var(--footer-bg);
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links a {
+            color: #ccc;
+            font-size: 1.3rem;
+            margin: 0 0.5rem;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--gold);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            padding: 0.9rem 1.5rem;
+            background: #2c3e2f;
+            color: white;
+            border-radius: 60px;
+            z-index: 2100;
+            animation: slideInRight 0.3s;
+            font-weight: 500;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+        }
+        .toast.error { background: #b22234; }
+        .toast.success { background: var(--success); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0;}
+            to { transform: translateX(0); opacity: 1;}
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; color: white; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(0,0,0,0.96);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+            .nav-links.active { display: flex; }
+            .hero { flex-direction: column; }
+            .hero-left, .hero-right { min-height: 450px; }
+            .hero-left-content h1 { font-size: 2.2rem; }
+            .card-row { grid-template-columns: 1fr; }
+            .section-title { font-size: 1.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">H<span>.</span>O<span>.</span>D</div>
+            <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#branches">Branches</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="user-menu" id="userMenu">
+                    <a href="#" id="signInBtn">Sign In</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="music-control" id="musicControl">
+        <i class="fas fa-headphones"></i>
+    </div>
+    <!-- Upbeat, royalty-free background track (loops) -->
+    <audio id="bgMusic" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/02/22/audio_dc4a2c1d6c.mp3?filename=upbeat-corporate-116204.mp3" type="audio/mpeg">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Modals -->
+    <div id="signInModal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><h2>Sign In</h2><form id="signInForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail" required></div><div class="form-group"><label>Password</label><input type="password" id="loginPassword" required></div><button type="submit" class="btn" style="width:100%">Sign In</button><p style="text-align:center; margin-top:1rem;">No account? <a href="#" id="showSignUp">Create one</a></p></form></div></div>
+    <div id="signUpModal" class="modal"><div class="modal-content"><span class="close-modal">&times;</span><h2>Create Account</h2><form id="signUpForm"><div class="form-group"><label>Full Name</label><input type="text" id="signupName" required></div><div class="form-group"><label>Email</label><input type="email" id="signupEmail" required></div><div class="form-group"><label>Password (min 6)</label><input type="password" id="signupPassword" minlength="6" required></div><div class="form-group"><label>Confirm Password</label><input type="password" id="signupConfirmPassword" required></div><button type="submit" class="btn" style="width:100%">Sign Up</button><p style="text-align:center; margin-top:1rem;">Already have an account? <a href="#" id="showSignIn">Sign In</a></p></form></div></div>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-left">
+            <div class="hero-left-content">
+                <h1>Welcome to <span class="hod">H.O.D</span></h1>
+                <p class="tagline">Haven of Distinction</p>
+                <p>Where enigmatic elegance meets timeless luxury — experience the pinnacle of hospitality.</p>
+                <a href="#booking" class="btn" style="margin-top:1.5rem;">Book Your Stay</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img class="hero-image" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1000" alt="H.O.D Luxury">
+            <div class="hero-right-content"><h3>Global Luxury</h3><p>10+ International Branches | Delhi NCR HQ</p></div>
+        </div>
+    </section>
+
+    <section id="about" class="section"><div class="container"><h2 class="section-title">About H.O.D</h2><div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center;"><div><p><strong>H.O.D (Haven of Distinction)</strong> is a globally renowned luxury hotel brand with headquarters in <strong>Delhi NCR, India</strong>. We've redefined hospitality across four continents, offering unparalleled service.</p><p>Founded by visionary leaders Pranav Kumar Singh and Ansh Singh, H.O.D combines architectural grandeur with modern sophistication.</p><div style="display:flex; gap:2rem; margin-top:2rem;"><div><div style="font-size:2rem; color:var(--gold); font-weight:bold;">10+</div><p>Branches</p></div><div><div style="font-size:2rem; color:var(--gold); font-weight:bold;">25+</div><p>Years</p></div><div><div style="font-size:2rem; color:var(--gold); font-weight:bold;">50k+</div><p>Guests</p></div></div></div><div><img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600" style="width:100%; border-radius:28px; box-shadow:var(--shadow);" alt="Lobby"></div></div></div></section>
+
+    <section id="branches" class="section" style="background:var(--bg-secondary);"><div class="container"><h2 class="section-title">🌍 Global Presence</h2><div class="branches-grid"><div class="branch-card"><i class="fas fa-building"></i><h4>Delhi NCR, India</h4><p>Global Headquarters</p><span class="headquarter-badge"><i class="fas fa-crown"></i> HQ</span></div><div class="branch-card"><i class="fas fa-city"></i><h4>Dubai, UAE</h4><p>Burj Khalifa District</p></div><div class="branch-card"><i class="fas fa-landmark"></i><h4>London, UK</h4><p>Mayfair</p></div><div class="branch-card"><i class="fas fa-skyline"></i><h4>New York, USA</h4><p>Manhattan</p></div><div class="branch-card"><i class="fas fa-umbrella-beach"></i><h4>Paris, France</h4><p>Champs-Élysées</p></div><div class="branch-card"><i class="fas fa-mountain"></i><h4>Tokyo, Japan</h4><p>Ginza</p></div><div class="branch-card"><i class="fas fa-water"></i><h4>Singapore</h4><p>Marina Bay</p></div><div class="branch-card"><i class="fas fa-champagne-glasses"></i><h4>Maldives</h4><p>Private Island</p></div></div></div></section>
+
+    <section id="rooms" class="section"><div class="container"><h2 class="section-title">Signature Suites</h2><div class="rooms-grid"><div class="room-card" data-price="199"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600"><div class="room-info"><h3>Deluxe Room</h3><p>Elegant comfort with city views.</p><div class="room-price">$199/night</div><a href="#booking" class="btn book-now-btn" style="padding:0.6rem 1.2rem;">Book Now</a></div></div><div class="room-card" data-price="299"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600"><div class="room-info"><h3>Executive Suite</h3><p>Spacious luxury with premium amenities.</p><div class="room-price">$299/night</div><a href="#booking" class="btn book-now-btn" style="padding:0.6rem 1.2rem;">Book Now</a></div></div><div class="room-card" data-price="599"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600"><div class="room-info"><h3>Presidential Suite</h3><p>Ultimate opulence, panoramic views.</p><div class="room-price">$599/night</div><a href="#booking" class="btn book-now-btn" style="padding:0.6rem 1.2rem;">Book Now</a></div></div></div></div></section>
+
+    <section id="amenities" class="section" style="background:var(--bg-secondary);"><div class="container"><h2 class="section-title">World-Class Amenities</h2><div class="amenities-grid"><div class="amenity"><i class="fas fa-swimming-pool"></i><h3>Infinity Pool</h3><p>Rooftop paradise</p></div><div class="amenity"><i class="fas fa-utensils"></i><h3>Michelin Dining</h3><p>Exquisite cuisine</p></div><div class="amenity"><i class="fas fa-spa"></i><h3>Royal Spa</h3><p>Rejuvenation therapy</p></div><div class="amenity"><i class="fas fa-dumbbell"></i><h3>State-of-Art Gym</h3><p>Modern equipment</p></div><div class="amenity"><i class="fas fa-concierge-bell"></i><h3>24K Service</h3><p>Butler on demand</p></div></div></div></section>
+
+    <section id="booking" class="section"><div class="container"><h2 class="section-title">Reserve Your Haven</h2><div class="booking-form"><form id="bookingForm"><div class="form-group"><label>Full Name *</label><input type="text" id="name" required></div><div class="form-group"><label>Email *</label><input type="email" id="email" required></div><div class="form-group"><label>Phone *</label><input type="tel" id="phone" required></div><div class="form-group"><label>Select Branch</label><select id="branch"><option>Delhi NCR (Headquarters)</option><option>Dubai, UAE</option><option>London, UK</option><option>New York, USA</option><option>Paris, France</option><option>Tokyo, Japan</option><option>Singapore</option><option>Maldives</option></select></div><div class="form-group"><label>Room Type</label><select id="roomSelect"><option value="199">Deluxe Room - $199/night</option><option value="299">Executive Suite - $299/night</option><option value="599">Presidential Suite - $599/night</option></select></div><div class="form-group"><label>Check-in Date</label><input type="date" id="checkin" required></div><div class="form-group"><label>Check-out Date</label><input type="date" id="checkout" required></div><div class="form-group"><label>Guests (1-4)</label><input type="number" id="guests" min="1" max="4" required></div>
+
+        <div><h3>Payment Details</h3><div class="payment-methods"><div class="payment-method active" data-method="credit"><i class="fas fa-credit-card"></i><p>Credit Card</p></div><div class="payment-method" data-method="paypal"><i class="fab fa-paypal"></i><p>PayPal</p></div><div class="payment-method" data-method="upi"><i class="fas fa-mobile-alt"></i><p>UPI</p></div></div>
+        <div id="creditCardForm" class="credit-card-form active"><div class="form-group"><label>Card Number</label><input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19"></div><div class="card-row"><div class="form-group"><label>Expiry (MM/YY)</label><input type="text" id="expiryDate" placeholder="MM/YY"></div><div class="form-group"><label>CVV</label><input type="password" id="cvv" maxlength="3"></div></div><div class="form-group"><label>Cardholder Name</label><input type="text" id="cardName"></div></div>
+        <div id="paypalForm" class="credit-card-form"><div class="form-group"><label>PayPal Email</label><input type="email" id="paypalEmail" placeholder="your@email.com"></div></div>
+        <div id="upiForm" class="credit-card-form"><div class="form-group"><label>UPI ID</label><input type="text" id="upiId" placeholder="username@okhdfcbank"></div></div>
+        <div class="payment-summary"><h3>Booking Summary</h3><p>Room: <span id="summaryRoom">-</span></p><p>Nights: <span id="summaryNights">0</span></p><div class="total-amount">Total: $<span id="totalAmount">0</span></div></div></div>
+        <button type="submit" class="btn" style="width:100%; margin-top:1rem;" id="confirmBtn">✨ Confirm & Pay ✨</button>
+        </form></div></div></section>
+
+    <section id="contact" class="section" style="background:var(--bg-secondary);"><div class="container"><h2 class="section-title">Contact & Leadership</h2><div class="contact-info"><div class="contact-item"><i class="fas fa-map-marker-alt"></i><h3>Headquarters</h3><p>H.O.D Corporate Tower<br>Cyber City, Gurugram, Delhi NCR</p></div><div class="contact-item"><i class="fas fa-phone"></i><h3>Global Concierge</h3><p>+91 124 456 7890<br>+1 (555) 123-4567</p></div><div class="contact-item"><i class="fas fa-envelope"></i><h3>Email</h3><p>royalty@hod.com</p></div></div><div class="creators"><h3><i class="fas fa-crown"></i> The Visionaries</h3><div class="owner-card"><i class="fas fa-user-tie"></i><h4>Pranav Kumar Singh</h4><p>CEO & Founder</p></div><div class="owner-card"><i class="fas fa-laptop-code"></i><h4>Pranav & Ansh Singh</h4><p>Co-CEOs & Software Architects</p></div><div class="creator-names"><div class="creator-card">Pranav Kumar Singh</div><div class="creator-card">Ansh Singh</div></div><p>"Crafted with passion, driven by excellence."</p></div></div></section>
+
+    <footer><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div><p>&copy; 2025 H.O.D — Haven of Distinction | Global Headquarters: Delhi NCR, India</p></footer>
+
+    <script>
+        // --- AUTOPLAY MUSIC (BEAT SONG) ---
+        const bgMusic = document.getElementById('bgMusic');
+        const musicControl = document.getElementById('musicControl');
+        let musicPlaying = false;
+        bgMusic.volume = 0.35; // comfortable background volume
+        bgMusic.loop = true;
+
+        // Try to autoplay immediately; if blocked, start on first user interaction
+        function startMusic() {
+            if (musicPlaying) return;
+            bgMusic.play().then(() => {
+                musicPlaying = true;
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                musicControl.style.opacity = '1';
+            }).catch(() => {
+                // Autoplay blocked – wait for any click
+                const onceClick = () => {
+                    bgMusic.play().then(() => {
+                        musicPlaying = true;
+                        musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                    }).catch(e => console.log("audio still blocked"));
+                    document.removeEventListener('click', onceClick);
+                };
+                document.addEventListener('click', onceClick);
+            });
+        }
+
+        // Attempt to start as soon as possible
+        startMusic();
+
+        // Music control button (toggle)
+        musicControl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (musicPlaying) {
+                bgMusic.pause();
+                musicControl.innerHTML = '<i class="fas fa-headphones"></i>';
+                musicPlaying = false;
+            } else {
+                bgMusic.play().catch(() => {});
+                musicControl.innerHTML = '<i class="fas fa-music"></i>';
+                musicPlaying = true;
+            }
+        });
+
+        // --- User system ---
+        let currentUser = JSON.parse(localStorage.getItem('hod_currentUser')) || null;
+        let users = JSON.parse(localStorage.getItem('hod_users')) || [];
+
+        function showToast(msg, type) { let t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; document.body.appendChild(t); setTimeout(()=>t.remove(),3500); }
+
+        function updateUI() {
+            const menu = document.getElementById('userMenu');
+            if(currentUser) {
+                menu.innerHTML = `<span class="user-name">👤 ${currentUser.name}</span><button class="logout-btn" onclick="logout()">Logout</button>`;
+                document.getElementById('name').value = currentUser.name;
+                document.getElementById('email').value = currentUser.email;
+            } else {
+                menu.innerHTML = '<a href="#" id="signInBtn">Sign In</a>';
+                const btn = document.getElementById('signInBtn');
+                if(btn) btn.onclick = (e) => { e.preventDefault(); document.getElementById('signInModal').style.display='flex'; };
+            }
+        }
+
+        window.logout = function() { currentUser=null; localStorage.removeItem('hod_currentUser'); updateUI(); showToast('Logged out','success'); };
+
+        // modals
+        const signInModal = document.getElementById('signInModal'), signUpModal = document.getElementById('signUpModal');
+        document.querySelectorAll('.close-modal').forEach(btn => btn.onclick = () => { signInModal.style.display='none'; signUpModal.style.display='none'; });
+        document.getElementById('showSignUp')?.addEventListener('click', (e) => { e.preventDefault(); signInModal.style.display='none'; signUpModal.style.display='flex'; });
+        document.getElementById('showSignIn')?.addEventListener('click', (e) => { e.preventDefault(); signUpModal.style.display='none'; signInModal.style.display='flex'; });
+
+        document.getElementById('signUpForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let name = document.getElementById('signupName').value, email = document.getElementById('signupEmail').value, pwd = document.getElementById('signupPassword').value, cpwd = document.getElementById('signupConfirmPassword').value;
+            if(pwd !== cpwd) { showToast('Passwords do not match','error'); return; }
+            if(users.find(u=>u.email===email)) { showToast('Email already registered','error'); return; }
+            users.push({name, email, password: pwd});
+            localStorage.setItem('hod_users', JSON.stringify(users));
+            showToast('Account created! Please sign in.','success');
+            signUpModal.style.display='none'; signInModal.style.display='flex';
+        });
+
+        document.getElementById('signInForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let email = document.getElementById('loginEmail').value, pwd = document.getElementById('loginPassword').value;
+            let user = users.find(u=>u.email===email && u.password===pwd);
+            if(user) { currentUser=user; localStorage.setItem('hod_currentUser',JSON.stringify(currentUser)); updateUI(); signInModal.style.display='none'; showToast(`Welcome back, ${user.name}!`,'success'); }
+            else showToast('Invalid credentials','error');
+        });
+
+        // Payment methods toggle
+        document.querySelectorAll('.payment-method').forEach(m => {
+            m.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(p=>p.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.credit-card-form').forEach(f=>f.classList.remove('active'));
+                if(this.dataset.method === 'credit') document.getElementById('creditCardForm').classList.add('active');
+                else if(this.dataset.method === 'paypal') document.getElementById('paypalForm').classList.add('active');
+                else if(this.dataset.method === 'upi') document.getElementById('upiForm').classList.add('active');
+            });
+        });
+
+        // total calculation
+        function calculateTotal() {
+            let price = parseInt(document.getElementById('roomSelect').value);
+            let checkin = new Date(document.getElementById('checkin').value);
+            let checkout = new Date(document.getElementById('checkout').value);
+            if(checkin && checkout && checkout > checkin) {
+                let nights = Math.ceil((checkout - checkin) / 86400000);
+                return { total: price * nights, nights };
+            }
+            return { total: 0, nights: 0 };
+        }
+
+        function updateTotal() {
+            let {total, nights} = calculateTotal();
+            let roomText = document.getElementById('roomSelect').options[document.getElementById('roomSelect').selectedIndex].text;
+            document.getElementById('summaryRoom').innerText = roomText;
+            document.getElementById('summaryNights').innerText = nights;
+            document.getElementById('totalAmount').innerText = total;
+        }
+
+        document.getElementById('roomSelect').addEventListener('change', updateTotal);
+        document.getElementById('checkin').addEventListener('change', updateTotal);
+        document.getElementById('checkout').addEventListener('change', updateTotal);
+        document.getElementById('guests').addEventListener('input', updateTotal);
+
+        // payment validation
+        function validatePayment() {
+            let active = document.querySelector('.payment-method.active').dataset.method;
+            if(active === 'credit') {
+                let card = document.getElementById('cardNumber').value.replace(/\s/g,'');
+                if(card.length !== 16 || !/^\d+$/.test(card)) return false;
+                let exp = document.getElementById('expiryDate').value;
+                if(!/^\d{2}\/\d{2}$/.test(exp)) return false;
+                let cvv = document.getElementById('cvv').value;
+                if(!/^\d{3}$/.test(cvv)) return false;
+                if(!document.getElementById('cardName').value.trim()) return false;
+                return true;
+            }
+            if(active === 'paypal') {
+                let email = document.getElementById('paypalEmail').value;
+                return email.includes('@') && email.includes('.');
+            }
+            if(active === 'upi') {
+                let upi = document.getElementById('upiId').value;
+                return upi.includes('@') && upi.length > 3;
+            }
+            return false;
+        }
+
+        // booking submit
+        const bookingForm = document.getElementById('bookingForm');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if(!currentUser) { showToast('Please sign in to book','error'); signInModal.style.display='flex'; return; }
+            let {total, nights} = calculateTotal();
+            if(total <= 0 || nights <= 0) { showToast('Please select valid check-in/out dates','error'); return; }
+            let guests = parseInt(document.getElementById('guests').value);
+            if(isNaN(guests) || guests<1 || guests>4) { showToast('Guests must be between 1 and 4','error'); return; }
+            if(!validatePayment()) { showToast('Please complete payment details correctly','error'); return; }
+
+            const confirmBtn = document.getElementById('confirmBtn');
+            confirmBtn.disabled = true;
+            confirmBtn.innerText = 'Processing...';
+            setTimeout(() => {
+                const booking = {
+                    id: 'HOD' + Date.now(),
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    branch: document.getElementById('branch').value,
+                    room: document.getElementById('roomSelect').options[document.getElementById('roomSelect').selectedIndex].text,
+                    checkin: document.getElementById('checkin').value,
+                    checkout: document.getElementById('checkout').value,
+                    guests: guests,
+                    total: total,
+                    date: new Date().toISOString()
+                };
+                let bookings = JSON.parse(localStorage.getItem('hod_bookings')) || [];
+                bookings.push(booking);
+                localStorage.setItem('hod_bookings', JSON.stringify(bookings));
+                showToast(`✅ Booking confirmed! Ref: ${booking.id} | Total: $${total}`, 'success');
+                bookingForm.reset();
+                updateTotal();
+                document.getElementById('cardNumber').value = '';
+                document.getElementById('expiryDate').value = '';
+                document.getElementById('cvv').value = '';
+                document.getElementById('cardName').value = '';
+                document.getElementById('paypalEmail').value = '';
+                document.getElementById('upiId').value = '';
+                confirmBtn.disabled = false;
+                confirmBtn.innerText = '✨ Confirm & Pay ✨';
+                document.querySelector('.payment-method[data-method="credit"]').click();
+            }, 800);
+        });
+
+        // format card input
+        const cardInput = document.getElementById('cardNumber');
+        if(cardInput) cardInput.addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\s/g,'').slice(0,16);
+            v = v.replace(/(\d{4})/g, '$1 ').trim();
+            e.target.value = v;
+        });
+        const expiryInput = document.getElementById('expiryDate');
+        if(expiryInput) expiryInput.addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g,'');
+            if(v.length>=2) v = v.slice(0,2)+'/'+v.slice(2,4);
+            e.target.value = v;
+        });
+
+        // set min dates
+        const today = new Date().toISOString().split('T')[0];
+        const checkin = document.getElementById('checkin');
+        const checkout = document.getElementById('checkout');
+        if(checkin) checkin.min = today;
+        if(checkout) checkout.min = today;
+        if(checkin) checkin.addEventListener('change', () => { if(checkout) checkout.min = checkin.value; });
+
+        // book now buttons
+        document.querySelectorAll('.book-now-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                let price = btn.closest('.room-card').dataset.price;
+                let select = document.getElementById('roomSelect');
+                for(let i=0;i<select.options.length;i++) {
+                    if(select.options[i].value === price) { select.selectedIndex = i; break; }
+                }
+                updateTotal();
+                document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // mobile menu
+        window.toggleMenu = function() { document.querySelector('.nav-links').classList.toggle('active'); };
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                let id = this.getAttribute('href');
+                if(id === '#' || id === '') return;
+                e.preventDefault();
+                let target = document.querySelector(id);
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('.nav-links')?.classList.remove('active');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            let header = document.querySelector('header');
+            if(window.scrollY > 80) header.style.background = 'rgba(10,10,18,0.96)';
+            else header.style.background = 'rgba(10,10,18,0.85)';
+        });
+
+        updateUI();
+        updateTotal();
+    </script>
+</body>
+  </html>
